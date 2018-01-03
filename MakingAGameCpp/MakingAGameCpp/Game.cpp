@@ -2,9 +2,24 @@
 
 GameHandler::GameHandler()
 {
+	//create window Essential
 	window.create(sf::VideoMode(width, height), windowName);
-	playerCharacter = sf::CircleShape(100.f);
-	playerCharacter.setFillColor(sf::Color::Green);
+
+	//create some actors. 
+
+	//GameActor* temp = new GameActor("mario.png");
+	//actors.push_back(temp);
+	player = new PlayerActor("Klonoa.png");
+	actors.push_back(player);
+
+}
+
+GameHandler::~GameHandler()
+{
+	for (GameActor* actor : actors)
+	{
+		delete actor;
+	}
 }
 
 void GameHandler::Update()
@@ -29,7 +44,7 @@ void GameHandler::Update()
 
 
 	window.clear();
-	window.draw(playerCharacter);
+	window.draw(actors[0]->GetSprite());
 	window.display();
 }
 
@@ -39,7 +54,12 @@ void GameHandler::HandleEventRunning(sf::Event event)
 	{
 		if (event.key.code == sf::Keyboard::Right)
 		{
-			playerCharacter.move(100, 0);
+			player->GetSprite().move(20, 0);
+		}
+
+		if (event.key.code == sf::Keyboard::Left)
+		{
+			player->GetSprite().move(-20, 0);
 		}
 	}
 }

@@ -1,6 +1,10 @@
 #pragma once
 #include <SFML/Graphics.hpp>
 #include <iostream>
+#include <vector>
+#include "GameActor.h"
+#include "PlayerActor.h"
+using namespace::std;
 
 enum GameStates
 {
@@ -16,11 +20,16 @@ private:
 	unsigned int height = 1080;
 	GameStates gameState = GameStates::Running;
 	char* windowName = "Wonder World";
-	sf::CircleShape playerCharacter;
+	
+	PlayerActor* player;
+	vector<GameActor*> actors;
+	
+	
 
 public:
 	//Constructor
 	GameHandler();
+	~GameHandler();
 	//Get/Setters
 	sf::RenderWindow* getWindow() {return &window; }; //returns a pointer to the game window
 	int getWidth() { return width; };
