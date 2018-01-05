@@ -13,6 +13,12 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Source Files\Actor Files">
+      <UniqueIdentifier>{8dc432f2-78d4-4bbe-a294-ebe760777a96}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Actor Header Files">
+      <UniqueIdentifier>{15c0b8e6-a141-4ab8-8219-bf818911e174}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -21,11 +27,14 @@
     <ClCompile Include="Game.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="GameActor.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="PlayerActor.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Actor Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GameActorAlive.cpp">
+      <Filter>Source Files\Actor Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GameActor.cpp">
+      <Filter>Source Files\Actor Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -33,10 +42,13 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="GameActor.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Actor Header Files</Filter>
     </ClInclude>
     <ClInclude Include="PlayerActor.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Actor Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GameActorAlive.h">
+      <Filter>Header Files\Actor Header Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

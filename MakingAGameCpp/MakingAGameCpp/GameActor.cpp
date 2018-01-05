@@ -2,11 +2,10 @@
 
 
 
-GameActor::GameActor(string imageName)
+GameActor::GameActor(string imagePath)
 {
 	
-
-	if (!texture.loadFromFile("sprites/" + imageName))
+	if (!texture.loadFromFile(imagePath))
 	{
 		std::cout << "error";
 	}

@@ -1,9 +1,14 @@
 #pragma once
-#include "GameActor.h"
-class PlayerActor : public GameActor
+#include "GameActorAlive.h"
+class PlayerActor : public GameActorAlive
 {
+private:
+	double clockAnimation = 0;
+	double frameAnimation = 0;
 public:
-	PlayerActor(string imageName);
+	PlayerActor(string imagePath);
 	~PlayerActor();
+
+	void Update(double deltaTime);
 };
 

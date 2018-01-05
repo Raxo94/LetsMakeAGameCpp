@@ -2,7 +2,6 @@
 #include <SFML/Graphics.hpp>
 #include <iostream>
 #include <vector>
-#include "GameActor.h"
 #include "PlayerActor.h"
 using namespace::std;
 
@@ -20,9 +19,11 @@ private:
 	unsigned int height = 1080;
 	GameStates gameState = GameStates::Running;
 	char* windowName = "Wonder World";
-	
 	PlayerActor* player;
-	vector<GameActor*> actors;
+
+	vector<vector<GameActor*>> actorsLayers;
+	vector<GameActorAlive*> actorsLiving;
+
 	
 	
 
@@ -42,7 +43,7 @@ public:
 	GameStates getGameState() { return gameState; };
 	
 	//Functions
-	void Update();
+	void Update(double deltaTime);
 	void HandleEventRunning(sf::Event event);
 	void HandleEventPaused(sf::Event event);
 

@@ -12,12 +12,14 @@
 int main()
 {	
 	_CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
-
-
+	
+	sf::Clock clock;
+	
 	GameHandler game;
 	while (game.getWindow()->isOpen())
 	{
-		game.Update(); //this is the main update loop that will play every frame. 
+		double deltaTime = clock.restart().asSeconds();
+		game.Update(deltaTime); //this is the main update loop that will play every frame. 
 	}
 	return 0;
 
