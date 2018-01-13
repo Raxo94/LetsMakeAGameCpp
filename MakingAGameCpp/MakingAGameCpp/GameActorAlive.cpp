@@ -2,7 +2,11 @@
 
 
 
-GameActorAlive::GameActorAlive(string imagePath) : GameActor(imagePath)
+GameActorAlive::GameActorAlive()
+{
+}
+
+GameActorAlive::GameActorAlive(string imagePath, vector<TextureHolder*>* textures) : GameActor(imagePath, textures)
 {
 
 }
@@ -19,5 +23,5 @@ void GameActorAlive::Update(double deltaTime)
 
 void GameActorAlive::applyGravity(double deltaTime)
 {
-	GetSprite().move(0, 100 * deltaTime);
+	GetSprite().move(0, 150 * deltaTime);
 }

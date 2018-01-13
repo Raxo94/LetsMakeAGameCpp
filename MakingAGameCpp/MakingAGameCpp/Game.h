@@ -3,6 +3,7 @@
 #include <iostream>
 #include <vector>
 #include "PlayerActor.h"
+#include "Level.h"
 using namespace::std;
 
 enum GameStates
@@ -21,10 +22,10 @@ private:
 	char* windowName = "Wonder World";
 	PlayerActor* player;
 
-	vector<vector<GameActor*>> actorsLayers;
-	vector<GameActorAlive*> actorsLiving;
+	Level* currentGameLevel;
+	vector<Level*> gameLevels;
 
-	
+	vector<TextureHolder*> textures;
 	
 
 public:

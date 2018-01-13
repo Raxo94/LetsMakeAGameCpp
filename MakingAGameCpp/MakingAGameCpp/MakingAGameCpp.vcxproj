@@ -154,17 +154,28 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="ActorPlatform.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameActor.cpp" />
     <ClCompile Include="GameActorAlive.cpp" />
+    <ClCompile Include="Level.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="PlayerActor.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="ActorPlatform.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="GameActor.h" />
     <ClInclude Include="GameActorAlive.h" />
+    <ClInclude Include="Level.h" />
     <ClInclude Include="PlayerActor.h" />
+    <ClInclude Include="resource.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="MakingAGameCpp.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ClassDiagram.cd" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

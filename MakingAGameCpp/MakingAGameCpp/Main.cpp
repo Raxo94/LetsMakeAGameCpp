@@ -19,6 +19,7 @@ int main()
 	while (game.getWindow()->isOpen())
 	{
 		double deltaTime = clock.restart().asSeconds();
+		cout << 1/ deltaTime << endl; //this line can be used to see the programs framerate.
 		game.Update(deltaTime); //this is the main update loop that will play every frame. 
 	}
 	return 0;

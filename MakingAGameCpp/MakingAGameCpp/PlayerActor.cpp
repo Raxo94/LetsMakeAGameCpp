@@ -2,12 +2,9 @@
 
 
 
-PlayerActor::PlayerActor(string imagePath) : GameActorAlive(imagePath)
+PlayerActor::PlayerActor(string imagePath, vector<TextureHolder*>* textures) : GameActorAlive(imagePath, textures)
 {
-
 	GetSprite().setTextureRect(sf::IntRect(0, 0, 256, 256));
-
-	
 }
 
 

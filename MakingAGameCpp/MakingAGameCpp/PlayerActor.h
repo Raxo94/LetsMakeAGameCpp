@@ -6,7 +6,7 @@ private:
 	double clockAnimation = 0;
 	double frameAnimation = 0;
 public:
-	PlayerActor(string imagePath);
+	PlayerActor(string imagePath, vector<TextureHolder*>* textures);
 	~PlayerActor();
 
 	void Update(double deltaTime);

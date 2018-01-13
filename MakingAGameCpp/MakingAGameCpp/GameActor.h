@@ -5,16 +5,22 @@
 
 using namespace::std;
 
+struct TextureHolder {
+	sf::Texture* texture;
+	string Name;
+};
+
 class GameActor
 {
 
 private:
 	sf::Sprite sprite;
-	sf::Texture texture;
 	
 
 public:
-	GameActor(string imagePath);
+	GameActor();
+	GameActor(string imagePath, vector<TextureHolder*>* textures);
+	GameActor(string imagePath, vector<TextureHolder*>* textures, float posX, float posY);
 	virtual ~GameActor();
 
 	sf::Sprite& GetSprite() { return sprite; };

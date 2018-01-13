@@ -4,39 +4,37 @@ GameHandler::GameHandler()
 {
 	//create window Essential
 	window.create(sf::VideoMode(width, height), windowName);
+	window.setFramerateLimit(60);
+	
 
-	//create some actors. 
-	vector<GameActor*> layer1;
-	vector<GameActor*> layer2;
-	actorsLayers.push_back(layer1);
-	actorsLayers.push_back(layer2);
-
-	GameActor* backround = new GameActor("BGS/Sunset.jpg");
-	player = new PlayerActor("Sprites/spritestrip.png");
-
-	actorsLayers[0].push_back(backround);
-	actorsLayers[1].push_back(player);
-	actorsLiving.push_back(player);
+	//Load Some Levels
+	player = new PlayerActor("Sprites/spritestrip.png",&textures);
+	currentGameLevel = new Level(player,&textures);
 
 }
 
 GameHandler::~GameHandler()
 {
-	for (vector<GameActor*> layer : actorsLayers)
+	delete currentGameLevel;
+	//since the level handels the player, deleting it is unneccesary.
+	for (TextureHolder* textureHolder : textures)
 	{
-		for (GameActor* actor : layer)
-		{
-			delete actor;
-		}
+		delete textureHolder->texture;
+		delete textureHolder;
 	}
+	textures.clear();
 	
 }
 
 void GameHandler::Update(double deltaTime)
 {
+
+	player->SetLastPosition(); //this sets the players current position to a variable.
+	//EVENTS
 	sf::Event event;
 	while (window.pollEvent(event))
 	{
+
 		if (event.type == sf::Event::Closed)
 			window.close();
 
@@ -51,16 +49,21 @@ void GameHandler::Update(double deltaTime)
 		}
 
 	}
-	for (GameActorAlive* actorAlive : actorsLiving)
+
+	for (GameActorAlive* actorAlive : currentGameLevel->GetActorLiving())
 	{
-		actorAlive->applyGravity(deltaTime);
+		//actorAlive->applyGravity(deltaTime);
 		actorAlive->Update(deltaTime);
+	}
+	for (ActorPlatform* platform : currentGameLevel->GetPlatforms())
+	{
+		platform->IsCollision(player);
 	}
 
 	//Clear Window and DrawCalls
 	window.clear();
 
-	for (vector<GameActor*> layer : actorsLayers)
+	for (vector<GameActor*> layer : currentGameLevel->GetActorLayers())
 	{
 		for (GameActor* actor : layer)
 		{
@@ -82,6 +85,16 @@ void GameHandler::HandleEventRunning(sf::Event event)
 		if (event.key.code == sf::Keyboard::Left)
 		{
 			player->GetSprite().move(-20, 0);
+		}
+
+		if (event.key.code == sf::Keyboard::Up)
+		{
+			player->GetSprite().move(0, -20);
+		}
+
+		if (event.key.code == sf::Keyboard::Down)
+		{
+			player->GetSprite().move(0, 20);
 		}
 	}
 }
